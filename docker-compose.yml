@@ -6,8 +6,8 @@ services:
     image: nginx:mainline-alpine
     restart: always
     ports:
-    - 80:80
-    - 443:443
+    - "80:80"
+    - "443:443"
     volumes:
     - ./nginx/conf.d:/etc/nginx/conf.d
     networks:
@@ -34,7 +34,7 @@ services:
     environment:
       NODE_ENV: production
     ports:
-      - 4000:4000
+      - "4000:4000"
     networks:
       - backend
     depends_on:
