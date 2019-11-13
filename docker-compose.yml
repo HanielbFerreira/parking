@@ -28,7 +28,6 @@ services:
   estacionamento:
     image: estacionamento
     build:
-      context: .
       dockerfile: Dockerfile
     restart: always
     environment:
