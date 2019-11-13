@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:mainline-alpine
+    restart: always
+    ports:
+    - 80:80
+    - 443:443
+    volumes:
+    - ./nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - backend
+    dependes_on:
+    - estacionamento
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:3.6
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - backend
+
+  estacionamento:
+    image: estacionamento
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      NODE_ENV: production
+    ports:
+      - 4000:4000
+    networks:
+      - backend
+    depends_on:
+     - mongodb
+
+networks:
+  backend:
+    driver: bridge
