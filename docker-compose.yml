@@ -9,7 +9,7 @@ services:
     - "80:80"
     - "443:443"
     volumes:
-    - ""./nginx/conf.d:/etc/nginx/conf.d"
+    - "./nginx/conf.d:/etc/nginx/conf.d"
     networks:
       - backend
     dependes_on:
@@ -19,7 +19,7 @@ services:
     container_name: mongodb
     image: mongo:3.6
     volumes:
-      - ""./data/db:/data/db"
+      - "./data/db:/data/db"
     ports:
       - 27017:27017
     networks:
