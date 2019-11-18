@@ -1,8 +1,9 @@
 FROM node:10.13-alpine
 ENV NODE_ENV production
 WORKDIR /usr/src/app
-COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
-RUN npm install --production --silent && mv node_modules ../
-COPY . .
+COPY package.json .
+RUN npm install
+ADD . /usr/src/app
+RUN npm run create
+CMD [ "npm", "start" ]
 EXPOSE 4000
-CMD npm install && npm run create && npm start
