@@ -1,29 +1,14 @@
 version: '3'
 
 services:
-  nginx:
-    container_name: nginx
-    image: nginx:mainline-alpine
-    restart: always
-    ports:
-    - "80:80"
-    - "443:443"
-    volumes:
-    - "./nginx/conf.d:/etc/nginx/conf.d"
-    networks:
-      - backend
-    depends_on:
-    - estacionamento
-
   mongodb:
-    image: tutum/mongodb
+    image: mongo
     ports:
       - "27017:27017"
-    restart: always
+    restart: unless-stopped
     environment:
-      - AUTH=no
-    volumes:
-      - /data/db:/data/db
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
     networks:
       - backend
 
@@ -40,6 +25,20 @@ services:
       - backend
     depends_on:
      - mongodb
+
+  nginx:
+    container_name: nginx
+    image: nginx:mainline-alpine
+    restart: unless-stopped
+    ports:
+    - "80:80"
+    - "443:443"
+    volumes:
+    - "./nginx/conf.d:/etc/nginx/conf.d"
+    networks:
+      - backend
+    depends_on:
+    - estacionamento
 
 networks:
   backend:
