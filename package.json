@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node .",
     "dev": "nodemon --watch src/ --exec \"ts-node src/server.ts\" -e ts",
-    "create": "tsc -p tsconfig.json",
+    "create": "npm run build",
+    "build": "tsc -p .",
     "refresh": "rm -rf ./node_modules ./package-lock.json && npm install"
   },
   "keywords": [],
