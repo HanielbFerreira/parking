@@ -5,12 +5,5 @@ COPY package*.json ./
 COPY tsconfig*.json ./
 COPY ./src ./src
 RUN npm ci --quiet && npm run build
-
-FROM node:12.13.0-slim
-
-WORKDIR /app
-ENV NODE_ENV=production
-COPY package*.json ./
-RUN npm ci --quiet --only=production
 EXPOSE 4000
 CMD [ "npm", "start" ]
