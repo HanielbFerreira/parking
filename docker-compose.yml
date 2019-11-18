@@ -1,40 +1,43 @@
 version: '3'
 
 services:
-  web:
-    build: .
+  nginx:
+    container_name: nginx
+    image: nginx:mainline-alpine
+    restart: always
     ports:
-     - "4000:4000"
+    - "80:80"
+    - "443:443"
     volumes:
-     - .:/code
-  redis:
-    image: redis
-    # dependes_on:
-    # - estacionamento
+    - "./nginx/conf.d:/etc/nginx/conf.d"
+    networks:
+      - backend
+    dependes_on:
+    - estacionamento
 
-  # mongodb:
-  #   container_name: mongodb
-  #   image: mongo:3.6
-  #   volumes:
-  #     - "./data/db:/data/db"
-  #   ports:
-  #     - "27017:27017"
-  #   networks:
-  #     - backend
+  mongodb:
+    container_name: mongodb
+    image: mongo:3.6
+    volumes:
+      - "./data/db:/data/db"
+    ports:
+      - "27017:27017"
+    networks:
+      - backend
 
-  # estacionamento:
-  #   image: estacionamento
-  #   build:
-  #     dockerfile: Dockerfile
-  #   restart: always
-  #   environment:
-  #     NODE_ENV: production
-  #   ports:
-  #     - "4000:4000"
-  #   networks:
-  #     - backend
-  #   depends_on:
-  #    - mongodb
+  estacionamento:
+    image: estacionamento
+    build:
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      NODE_ENV: production
+    ports:
+      - "4000:4000"
+    networks:
+      - backend
+    depends_on:
+     - mongodb
 
 networks:
   backend:
