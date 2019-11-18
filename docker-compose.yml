@@ -26,7 +26,10 @@ services:
       - backend
 
   estacionamento:
+    image: haniel/estacionamento
+    container_name: app
     build:
+      context: .
       dockerfile: Dockerfile
     restart: always
     environment:
