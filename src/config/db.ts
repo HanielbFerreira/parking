@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 class Database {
 
-    private DB_URI = 'mongodb://mongodb:27017/park';
+    private DB_URI = 'mongodb://root:root@mongodb:27017/park';
 
     private DB_CONNECTION: any;
 
