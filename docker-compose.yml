@@ -15,9 +15,9 @@ services:
     depends_on:
     - estacionamento
 
-  mongodb:
-    container_name: mongodb
-    image: mongo:3.6
+  mongo:
+    container_name: mongo
+    image: mongo
     volumes:
       - "./data/db:/data/db"
     ports:
@@ -37,7 +37,7 @@ services:
     networks:
       - backend
     depends_on:
-     - mongodb
+     - mongo
 
 networks:
   backend:
