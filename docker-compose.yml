@@ -17,11 +17,14 @@ services:
 
   mongo:
     container_name: mongo
-    image: mongo
-    volumes:
-      - "./data/db:/data/db"
+    image: tutum/mongodb
     ports:
       - "27017:27017"
+    restart: always
+    environment:
+      - AUTH=no
+    volumes:
+      - /data/db:/data/db
     networks:
       - backend
 
