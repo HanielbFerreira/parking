@@ -31,9 +31,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    restart: always
-    environment:
-      NODE_ENV: production
+    restart: unless-stopped
     ports:
       - "4000:4000"
     networks:
