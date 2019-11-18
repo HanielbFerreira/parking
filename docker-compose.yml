@@ -1,17 +1,14 @@
 version: '3'
 
 services:
-  nginx:
-    container_name: nginx
-    image: nginx:mainline-alpine
-    restart: always
+  web:
+    build: .
     ports:
-    - "80:80"
-    - "443:443"
+     - "4000:4000"
     volumes:
-    - "./nginx/conf.d:/etc/nginx/conf.d"
-    networks:
-      - backend
+     - .:/code
+  redis:
+    image: redis
     # dependes_on:
     # - estacionamento
 
