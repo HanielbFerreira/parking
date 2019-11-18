@@ -12,7 +12,7 @@ services:
     - "./nginx/conf.d:/etc/nginx/conf.d"
     networks:
       - backend
-    dependes_on:
+    depends_on:
     - estacionamento
 
   mongodb:
