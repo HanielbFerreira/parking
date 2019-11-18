@@ -15,8 +15,7 @@ services:
     depends_on:
     - estacionamento
 
-  mongo:
-    container_name: mongo
+  mongodb:
     image: tutum/mongodb
     ports:
       - "27017:27017"
@@ -40,7 +39,7 @@ services:
     networks:
       - backend
     depends_on:
-     - mongo
+     - mongodb
 
 networks:
   backend:
