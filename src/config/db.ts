@@ -2,14 +2,25 @@ import mongoose from 'mongoose';
 
 class Database {
 
-    private DB_URI = 'mongodb://root:root@mongodb:27017/park';
+    private user = process.env.USER;
+    private pwd = process.env.PASSWORD;
+
+    private DB_URI = 'mongodb://mongodb:27017';
 
     private DB_CONNECTION: any;
 
     constructor() { }
 
     createConnection() {
-        mongoose.connect(this.DB_URI);
+
+        mongoose.connect(this.DB_URI, {
+          user: this.user,
+          pass: this.pwd,
+          dbName: 'park',
+          useNewUrlParser: true,
+
+        });
+        
 
         this.logger(this.DB_URI);
     }
