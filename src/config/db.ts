@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 
 class Database {
 
-    private user = process.env.USER;
-    private pwd = process.env.PASSWORD;
+    private user = 'root';
+    private pwd = 'root';
 
     private DB_URI = 'mongodb://mongodb:27017';
 
@@ -18,7 +18,6 @@ class Database {
           pass: this.pwd,
           dbName: 'park',
           useNewUrlParser: true,
-
         });
         
 
