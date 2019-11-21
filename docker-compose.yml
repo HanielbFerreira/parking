@@ -17,6 +17,9 @@ services:
   estacionamento:
     image: haniel/estacionamento
     container_name: app
+    environment:
+      - USER=root
+      - PASSWORD=root
     build:
       context: .
       dockerfile: Dockerfile
