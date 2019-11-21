@@ -17,6 +17,7 @@ class Database {
           user: this.user,
           pass: this.pwd,
           dbName: 'park',
+          authSource: 'admin',
           useNewUrlParser: true,
         });
         
