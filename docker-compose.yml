@@ -17,9 +17,6 @@ services:
   estacionamento:
     image: haniel/estacionamento
     container_name: app
-    environment:
-      - user=root
-      - pass=MongoDB2019!
     build:
       context: .
       dockerfile: Dockerfile
