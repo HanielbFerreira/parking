@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 
 class Database {
 
-    private user = 'root';
-    private pwd = 'root';
+    private user = process.env.USER;
+    private pwd = process.env.PASSWORD;
 
     private DB_URI = 'mongodb://mongodb:27017';
 

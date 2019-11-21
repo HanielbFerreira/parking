@@ -4,19 +4,22 @@ services:
   mongodb:
     container_name: mongodb
     image: mongo
-    ports:
-      - "27017:27017"
     restart: unless-stopped
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_ROOT_PASSWORD: MongoDB2019!
       MONGO_INITDB_DATABASE: admin
+    ports:
+      - "27017:27017"
     networks:
       - backend
 
   estacionamento:
     image: haniel/estacionamento
     container_name: app
+    environment:
+      - USER
+      - PASSWORD
     build:
       context: .
       dockerfile: Dockerfile
