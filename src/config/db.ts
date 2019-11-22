@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 class Database {
 
-    private user = process.env.USER;
+    private user = process.env.USR;
     private pwd = process.env.PASSWORD;
 
     private DB_URI = 'mongodb://mongodb:27017';

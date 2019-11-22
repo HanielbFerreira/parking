@@ -21,8 +21,8 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-         - USER=${user}
-         - PASSWORD=${pass}
+         - USER=${USR}
+         - PASSWORD=${PASSWORD}
     restart: unless-stopped
     ports:
       - "4000:4000"
