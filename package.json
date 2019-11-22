@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/server.js",
   "scripts": {
-    "start": "node . USER='' PASSWORD=''",
+    "start": "node .",
     "dev": "nodemon --watch src/ --exec \"ts-node src/server.ts\" -e ts",
     "create": "npm run build",
     "build": "tsc -p tsconfig.json",

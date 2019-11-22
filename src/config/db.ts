@@ -1,10 +1,6 @@
 import mongoose from 'mongoose';
 
 class Database {
-
-    private user = process.env.USR;
-    private pwd = process.env.PASSWORD;
-
     private DB_URI = 'mongodb://mongodb:27017';
 
     private DB_CONNECTION: any;
@@ -14,8 +10,8 @@ class Database {
     createConnection() {
 
         mongoose.connect(this.DB_URI, {
-          user: this.user,
-          pass: this.pwd,
+          user: 'root',
+          pass: 'MongoDB2019!',
           dbName: 'park',
           authSource: 'admin',
           useNewUrlParser: true,

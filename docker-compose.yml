@@ -20,10 +20,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-         - USER=${USR}
-         - PASSWORD=${PASSWORD}
     restart: unless-stopped
+    links:
+      - "mongodb:mongodb"
     ports:
       - "4000:4000"
     networks:

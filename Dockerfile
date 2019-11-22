@@ -9,3 +9,7 @@ COPY ./src ./src
 RUN npm ci --quiet && npm run build
 EXPOSE 4000
 CMD [ "npm", "start" ]
+
+FROM nginx
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
