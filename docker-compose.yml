@@ -32,7 +32,7 @@ services:
 
   nginx:
     container_name: nginx
-    image: nginx:mainline-alpine
+    image: nginx
     restart: unless-stopped
     ports:
     - "80:80"
