@@ -17,12 +17,12 @@ services:
   estacionamento:
     image: haniel/estacionamento
     container_name: app
-    environment:
-      USER: $user
-      PASSWORD: $pass
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+         - USER=${user}
+         - PASSWORD=${pass}
     restart: unless-stopped
     ports:
       - "4000:4000"

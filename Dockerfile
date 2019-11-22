@@ -1,5 +1,7 @@
 FROM node:12.13.0
 
+ARG user
+ARG pass
 WORKDIR /usr/src/app
 COPY package*.json ./
 COPY tsconfig*.json ./
