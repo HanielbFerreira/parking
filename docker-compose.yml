@@ -21,8 +21,6 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
-    links:
-      - "mongodb:mongodb"
     ports:
       - "4000:4000"
     networks:
