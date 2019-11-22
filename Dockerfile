@@ -6,10 +6,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 COPY tsconfig*.json ./
 COPY ./src ./src
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 RUN npm ci --quiet && npm run build
 EXPOSE 4000
 CMD [ "npm", "start" ]
-
-FROM nginx
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d/default.conf
