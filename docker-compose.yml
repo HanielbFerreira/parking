@@ -18,8 +18,8 @@ services:
     image: haniel/estacionamento
     container_name: app
     environment:
-      USER: root
-      PASSWORD: MongoDB2019!
+      USER: $user
+      PASSWORD: $pass
     build:
       context: .
       dockerfile: Dockerfile
