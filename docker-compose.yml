@@ -70,8 +70,6 @@ services:
       - /etc/letsencrypt/:/etc/letsencrypt/
     networks:
       - backend
-    depends_on:
-    - estacionamento
 
 networks:
   backend:
