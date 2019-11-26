@@ -14,7 +14,7 @@ services:
     networks:
       - backend
 
-  estacionamento_1:
+   estacionamento_1:
     image: haniel/estacionamento
     container_name: estacionamento_1
     build:
